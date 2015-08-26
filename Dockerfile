@@ -36,16 +36,16 @@ ADD services/ /etc/service/
 RUN chmod -v +x /etc/service/*/run /etc/my_init.d/*.sh && \
 
 # enable apache mods
+cp /etc/apache2/ports.conf /defaults/ports.conf && \
 mv /defaults/envvars /etc/apache2/envvars && \
 mv /defaults/php5-fpm.conf /etc/apache2/conf-available/ && \ 
 ln -s /etc/apache2/conf-available/php5-fpm.conf /etc/apache2/conf-enabled/ && \
 sed -i "s/www-data/abc/g" /etc/php5/fpm/pool.d/www.conf && \
-sed -i "s#/var/www#/config#g" /etc/apache2/apache2.conf && \
-echo "IncludeOptional /config/apache/site-confs/*.conf" >> /etc/apache2/apache2.conf && \
+sed -i "s#/var/www#/config/www#g" /etc/apache2/apache2.conf && \
+sed -i "s#IncludeOptional sites-enabled#IncludeOptional /config/apache/site-confs#g" /etc/apache2/apache2.conf && \
 sed -i '/Include ports.conf/s/^/#/g' /etc/apache2/apache2.conf && \
 echo "Include /config/apache/ports.conf"  >> /etc/apache2/apache2.conf && \
 cp /etc/apache2/apache2.conf /defaults/apache2.conf && \
-cp /etc/apache2/ports.conf /defaults/ports.conf && \
 a2enmod actions rewrite fastcgi alias
 
 # expose ports
