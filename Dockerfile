@@ -7,6 +7,7 @@ ENV LANG="en_US.UTF-8" LANGUAGE="en_US:en" LC_ALL="en_US.UTF-8"
 # set the packages as a variable (easier for update routine on startup)
 ENV install_packages="apache2-mpm-worker \ 
 libapache2-mod-fastcgi \
+openssl \
 php5 \
 php5-curl \
 php5-fpm"
@@ -39,6 +40,11 @@ mv /defaults/php5-fpm.conf /etc/apache2/conf-available/ && \
 ln -s /etc/apache2/conf-available/php5-fpm.conf /etc/apache2/conf-enabled/ && \
 sed -i "s/www-data/abc/g" /etc/php5/fpm/pool.d/www.conf && \
 sed -i "s#/var/www#/config#g" /etc/apache2/apache2.conf && \
+echo "IncludeOptional /config/apache/site-confs/*.conf" >> /etc/apache2/apache2.conf && \
+echo "Include /config/apache/ports.conf"  >> /etc/apache2/apache2.conf && \
+sed -i '/![^#]/ s/\(^.*Include ports.conf.*$\)/#\ \1/' /etc/apache2/apache2.conf
+cp /etc/apache2/apache2.conf /defaults/apache2.conf && \
+cp /etc/apache2/ports.conf /defaults/ports.conf && \
 a2enmod actions rewrite fastcgi alias
 
 # expose ports
