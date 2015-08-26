@@ -11,9 +11,9 @@ if [ ! -f "/config/apache/ports.conf" ]; then
 cp /defaults/ports.conf /config/apache/ports.conf
 fi
 
-#if [ ! -f "/config/apache/site-confs/default" ]; then
-#cp /defaults/default /config/apache/site-confs/default
-#fi
+if [ ! -f "/config/apache/site-confs/default" ]; then
+cp /defaults/default /config/apache/site-confs/default
+fi
 
 if [[ $(find /config/www -type f | wc -l) -eq 0 ]]; then
 cp /defaults/index.html /config/www/index.html
