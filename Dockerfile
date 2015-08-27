@@ -4,26 +4,16 @@ MAINTAINER Mark Burford <sparklyballs@gmail.com>
 # Set correct environment variables
 ENV LANG="en_US.UTF-8" LANGUAGE="en_US:en" LC_ALL="en_US.UTF-8"
 
-# set the packages as a variable (easier for update routine on startup)
-ENV install_packages="apache2-mpm-worker \ 
-libapache2-mod-fastcgi \
-openssl \
-php5 \
-php5-cli \
-php5-curl \
-php5-fpm"
-
 # Set the locale
 RUN locale-gen en_US.UTF-8
 
-# add some repos
+# add some repos (made a separate run line for these because of changes in new base image)
 RUN add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe multiverse" && \
-add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse" && \
+add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse"
 
 # install main packages
-apt-get update -q && \
-apt-get install \
-$install_packages -qy && \
+RUN apt-get update -q && \
+apt-get install apache2-mpm-worker libapache2-mod-fastcgi openssl php5 php5-cli php5-curl php5-fpm -qy && \
 
 # cleanup 
 apt-get clean -y && \
