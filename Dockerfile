@@ -36,7 +36,7 @@ sed -i "s#IncludeOptional sites-enabled#IncludeOptional /config/apache/site-conf
 sed -i '/Include ports.conf/s/^/#/g' /etc/apache2/apache2.conf && \
 echo "Include /config/apache/ports.conf"  >> /etc/apache2/apache2.conf && \
 cp /etc/apache2/apache2.conf /defaults/apache2.conf && \
-a2enmod actions rewrite fastcgi alias
+a2enmod actions rewrite fastcgi alias ssl
 
 # expose ports
 EXPOSE 80 443
