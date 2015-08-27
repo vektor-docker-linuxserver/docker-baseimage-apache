@@ -10,7 +10,7 @@ if [ ! -f "/config/apache/ports.conf" ]; then
 cp /defaults/ports.conf /config/apache/ports.conf
 fi
 
-if [ ! -f "/config/apache/site-confs/default" ]; then
+if [ ! -f "/config/apache/site-confs/default.conf" ]; then
 cp /defaults/default.conf /config/apache/site-confs/default.conf
 fi
 
