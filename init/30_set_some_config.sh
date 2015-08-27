@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p /config/apache/site-confs /config/www /config/log/apache /config/key
+mkdir -p /config/apache/site-confs /config/www /config/log/apache /config/keys
 
 
 
