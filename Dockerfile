@@ -1,5 +1,5 @@
 FROM linuxserver/baseimage
-MAINTAINER Mark Burford <sparklyballs@gmail.com>
+MAINTAINER Sparklyballs <sparklyballs@linuxserver.io>
 
 # Set correct environment variables
 ENV BASE_APTLIST="apache2-mpm-worker libapache2-mod-fastcgi openssl php5 php5-cli php5-curl php5-fpm" LANG="en_US.UTF-8" LANGUAGE="en_US:en" LC_ALL="en_US.UTF-8"
