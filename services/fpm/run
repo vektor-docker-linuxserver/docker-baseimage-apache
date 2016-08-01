@@ -1,3 +1,0 @@
-#!/bin/bash
-
-exec /usr/sbin/php-fpm7.0 -F --allow-to-run-as-root
