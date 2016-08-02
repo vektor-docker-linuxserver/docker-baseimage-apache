@@ -3,10 +3,7 @@ MAINTAINER Sparklyballs <sparklyballs@linuxserver.io>
 MAINTAINER Vektory79 <vektory79@gmail.com>
 
 # Set correct environment variables
-ENV BASE_APTLIST="apache2 libapache2-mpm-itk libapache2-mod-fastcgi openssl" LANG="en_US.UTF-8" LANGUAGE="en_US:en" LC_ALL="en_US.UTF-8"
-
-# Set the locale
-RUN locale-gen en_US.UTF-8
+ENV BASE_APTLIST="apache2 libapache2-mpm-itk libapache2-mod-fastcgi openssl"
 
 # install main packages
 RUN apt-get update -q && \
